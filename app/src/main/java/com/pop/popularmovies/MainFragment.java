@@ -8,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.ImageView;
 
 import com.pop.popularmovies.util.APIGetter;
-import com.pop.popularmovies.util.ImageLoader;
 import com.pop.popularmovies.util.MovieItem;
 
 import org.json.JSONArray;
@@ -79,7 +77,7 @@ public class MainFragment extends Fragment {
         movieAsyncTask.execute();
     }
 
-    private void loadImage() {
+    /*private void loadImage() {
         imageLoader = new ImageLoader(MainActivity.this);
 
         Holder holder = new Holder();
@@ -91,7 +89,7 @@ public class MainFragment extends Fragment {
         btnShare.setEnabled(true);
 
         pd.dismiss();
-    }
+    }*/
 
     class MovieAsyncTask extends AsyncTask<Void, Void, ArrayList<MovieItem>> {
 

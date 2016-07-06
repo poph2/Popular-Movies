@@ -46,6 +46,9 @@ public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = view;
+
+        ViewHolder holder;
+
         ImageView picture;
         TextView name;
 
@@ -54,6 +57,14 @@ public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
             v.setTag(R.id.movie_grid_item_imageview, v.findViewById(R.id.movie_grid_item_imageview));
             v.setTag(R.id.movie_grid_item_textview, v.findViewById(R.id.movie_grid_item_textview));
         }
+        else {
+            holder = (ViewHolder) v.getTag();
+        }
+
+        //GridItem item = mGridData.get(position);
+        //holder.titleTextView.setText(Html.fromHtml(item.getTitle()));
+
+        //Picasso.with(mContext).load(item.getImage()).into(holder.imageView);
 
         picture = (ImageView) v.getTag(R.id.movie_grid_item_imageview);
         name = (TextView) v.getTag(R.id.movie_grid_item_textview);
@@ -66,5 +77,9 @@ public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
         return v;
     }
 
+    static class ViewHolder {
+        TextView titleTextView;
+        ImageView imageView;
+    }
 
 }
