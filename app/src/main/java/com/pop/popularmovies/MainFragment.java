@@ -38,11 +38,11 @@ public class MainFragment extends Fragment {
 
         ArrayList<MovieItem> movieItemList = new ArrayList<>();
 
-        movieItemList.add(new MovieItem("Red",          R.drawable.red));
-        movieItemList.add(new MovieItem("Aquamarine",   R.drawable.aquamarine));
-        movieItemList.add(new MovieItem("Bittersweet",  R.drawable.bittersweet));
-        movieItemList.add(new MovieItem("Deep Lilac",   R.drawable.deep_lilac));
-        movieItemList.add(new MovieItem("Gold",         R.drawable.gold));
+        //movieItemList.add(new MovieItem("Red",          R.drawable.red));
+        //movieItemList.add(new MovieItem("Aquamarine",   R.drawable.aquamarine));
+        //movieItemList.add(new MovieItem("Bittersweet",  R.drawable.bittersweet));
+        //movieItemList.add(new MovieItem("Deep Lilac",   R.drawable.deep_lilac));
+        //movieItemList.add(new MovieItem("Gold",         R.drawable.gold));
         //movieItemList.add(new MovieItem("Azure",        R.drawable.azure));
 
         mMovieAdapter = new MovieGridAdapter(
@@ -77,20 +77,6 @@ public class MainFragment extends Fragment {
         movieAsyncTask.execute();
     }
 
-    /*private void loadImage() {
-        imageLoader = new ImageLoader(MainActivity.this);
-
-        Holder holder = new Holder();
-        holder.ivPhoto = (ImageView) findViewById(R.id.imageView);
-        imageLoader.DisplayImage(clipboardImageUrl, holder.ivPhoto);
-
-        textView.setText(clipboardUsername);
-
-        btnShare.setEnabled(true);
-
-        pd.dismiss();
-    }*/
-
     class MovieAsyncTask extends AsyncTask<Void, Void, ArrayList<MovieItem>> {
 
         private final String LOG_TAG = MovieAsyncTask.class.getSimpleName();
@@ -102,15 +88,14 @@ public class MainFragment extends Fragment {
 
             ArrayList<MovieItem> movieItemList = new ArrayList<>();
 
-            movieItemList.add(new MovieItem("Red",          R.drawable.red));
-            movieItemList.add(new MovieItem("Aquamarine",   R.drawable.aquamarine));
-            movieItemList.add(new MovieItem("Bittersweet",  R.drawable.bittersweet));
+            //movieItemList.add(new MovieItem("Red",          R.drawable.red));
+            //movieItemList.add(new MovieItem("Aquamarine",   R.drawable.aquamarine));
+            //movieItemList.add(new MovieItem("Bittersweet",  R.drawable.bittersweet));
             //movieItemList.add(new MovieItem("Deep Lilac",   R.drawable.deep_lilac));
             //movieItemList.add(new MovieItem("Gold",         R.drawable.gold));
             //movieItemList.add(new MovieItem("Azure",        R.drawable.azure));
 
             try {
-                movieItemList.remove(0);
                 movieItemList = getMovieItemsFromJson(movieJson);
                 //Toast.makeText(getActivity(), "HERE", Toast.LENGTH_LONG).show();
             }
@@ -130,7 +115,7 @@ public class MainFragment extends Fragment {
 
             for(int i = 0; i < resultJsonArray.length(); i++) {
                 JSONObject movieJsonObject = resultJsonArray.getJSONObject(i);
-                movieItemList.add(new MovieItem(movieJsonObject.getString("original_title"), R.drawable.red));
+                movieItemList.add(new MovieItem(movieJsonObject));
             }
 
             return movieItemList;

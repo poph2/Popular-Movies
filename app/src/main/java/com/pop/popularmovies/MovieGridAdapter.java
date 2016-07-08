@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.pop.popularmovies.util.MovieItem;
 
 import java.util.ArrayList;
@@ -71,8 +72,16 @@ public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
 
         MovieItem movieItem = getItem(i);
 
-        picture.setImageResource(movieItem.drawableId);
-        name.setText(movieItem.name);
+        //picture.setImageResource(movieItem.drawableId);
+        //name.setText(movieItem.name);
+
+        String imgUrl = "http://image.tmdb.org/t/p/w500" + movieItem.poster_path;
+
+        ViewHolder viewHolder = new ViewHolder(v);
+        Glide.with(getContext()).load(imgUrl).into(viewHolder.imageView);
+        viewHolder.titleTextView.setText(movieItem.title);
+
+        //loadImage(picture, "http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg");
 
         return v;
     }
@@ -80,6 +89,10 @@ public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
     static class ViewHolder {
         TextView titleTextView;
         ImageView imageView;
-    }
 
+        public ViewHolder(View view) {
+            imageView = (ImageView) view.findViewById(R.id.movie_grid_item_imageview);
+            titleTextView = (TextView) view.findViewById(R.id.movie_grid_item_textview);
+        }
+    }
 }
