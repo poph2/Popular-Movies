@@ -1,7 +1,9 @@
 package com.pop.popularmovies.util;
 
 /**
- * Created by Adbello on 7/6/2016.
+ * Created by Pop H2 on 7/6/2016.
+ * Pop Inc
+ * Lagos Nigeria
  */
 public class MovieJSONData {
 

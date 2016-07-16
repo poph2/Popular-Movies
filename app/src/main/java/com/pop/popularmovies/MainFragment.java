@@ -1,5 +1,6 @@
 package com.pop.popularmovies;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.pop.popularmovies.util.APIGetter;
 import com.pop.popularmovies.util.MovieItem;
@@ -19,7 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     private MovieGridAdapter mMovieAdapter;
 
@@ -59,6 +62,8 @@ public class MainFragment extends Fragment {
         GridView gridView = (GridView) rootView.findViewById(R.id.movie_gridview);
         gridView.setAdapter(mMovieAdapter);
 
+        gridView.setOnItemClickListener(this);
+
         updateMovies();
 
         // Inflate the layout for this fragment
@@ -75,6 +80,15 @@ public class MainFragment extends Fragment {
         //Toast.makeText(getContext(), "HERE1111", Toast.LENGTH_LONG).show();
         MovieAsyncTask movieAsyncTask = new MovieAsyncTask();
         movieAsyncTask.execute();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+        Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_LONG).show();
+
+        startActivity(new Intent(getContext(), MovieDetailsActivity.class));
     }
 
     class MovieAsyncTask extends AsyncTask<Void, Void, ArrayList<MovieItem>> {

@@ -11,7 +11,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Adbello on 7/6/2016.
+ * Created by Pop H2 on 7/6/2016.
+ * Pop Inc
+ * Lagos Nigeria
  */
 public class APIGetter {
 
@@ -49,7 +51,7 @@ public class APIGetter {
 
             // Read the input stream into a String
             InputStream inputStream = urlConnection.getInputStream();
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             if (inputStream == null) {
                 // Nothing to do.
                 return null;
@@ -61,7 +63,7 @@ public class APIGetter {
                 // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
                 // But it does make debugging a *lot* easier if you print out the completed
                 // buffer for debugging.
-                buffer.append(line + "\n");
+                buffer.append(line).append("\n");
             }
 
             if (buffer.length() == 0) {

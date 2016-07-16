@@ -11,7 +11,8 @@
         android:layout_height="100dp"
         android:id="@+id/movie_grid_item_imageview"
         android:src="@mipmap/ic_launcher"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/movie_thumb_content_description"/>
 
     <TextView
         android:layout_width="100dp"
