@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.pop.popularmovies.util.APIGetter;
 import com.pop.popularmovies.util.MovieItem;
 
@@ -88,7 +89,14 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
         Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_LONG).show();
 
-        startActivity(new Intent(getContext(), MovieDetailsActivity.class));
+        Intent i = new Intent(getContext(), MovieDetailsActivity.class);
+        MovieItem movieItem = mMovieAdapter.getItem(position);
+
+        String jsonText = new Gson().toJson(movieItem);
+
+        i.putExtra("movie_item", jsonText);
+
+        startActivity(i);
     }
 
     class MovieAsyncTask extends AsyncTask<Void, Void, ArrayList<MovieItem>> {

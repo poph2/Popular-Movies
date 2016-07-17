@@ -18,31 +18,35 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:id="@+id/imageView"
+                android:id="@+id/movieDetailsBackDropImageView"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
+                android:scaleType="centerCrop"
                 android:src="@android:mipmap/sym_def_app_icon" />
 
             <ImageView
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:id="@+id/imageView2"
+                android:id="@+id/movieDetailsPosterImageView"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="147dp" />
+                android:layout_marginTop="147dp"
+                android:background="#ffffff"
+                android:padding="3dp"
+                android:layout_marginLeft="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
-                android:id="@+id/textView"
-                android:layout_alignBottom="@+id/imageView2"
-                android:layout_toRightOf="@+id/imageView2"
-                android:layout_toEndOf="@+id/imageView2" />
+                android:id="@+id/movieDetailsTextView"
+                android:layout_alignBottom="@+id/movieDetailsPosterImageView"
+                android:layout_toRightOf="@+id/movieDetailsPosterImageView"
+                android:layout_toEndOf="@+id/movieDetailsPosterImageView" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,7 +55,7 @@
                 android:id="@+id/textView2"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/imageView2"
+                android:layout_below="@+id/movieDetailsPosterImageView"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>

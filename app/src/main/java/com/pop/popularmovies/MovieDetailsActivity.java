@@ -1,11 +1,7 @@
 package com.pop.popularmovies;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
@@ -13,10 +9,27 @@ public class MovieDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        /*if (savedInstanceState == null) {
+
+            Intent i = getIntent();
+            String movieItemJSON = i.getStringExtra("movie_item");
+
+            Bundle bundle = new Bundle();
+            bundle.putString("movie_item", movieItemJSON );
+            MovieDetailsActivityFragment mdaFragment = new MovieDetailsActivityFragment();
+            mdaFragment.setArguments(bundle);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.movie_container, mdaFragment)
+                    .commit();
+        }*/
+
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -24,7 +37,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
     }
 
 }
