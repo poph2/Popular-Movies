@@ -26,8 +26,17 @@
                 android:value="com.pop.popularmovies.MainActivity" />
         </activity>
         <activity
-            android:name=".MovieDetailsActivity"
+            android:name=".movie_details.MovieDetailsActivity"
             android:label="@string/title_activity_movie_details"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.pop.popularmovies.MainActivity" />
+        </activity>
+        <activity
+            android:name=".movie_details.DetailsActivity"
+            android:label="@string/title_activity_details"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

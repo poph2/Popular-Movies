@@ -1,7 +1,8 @@
-package com.pop.popularmovies;
+package com.pop.popularmovies.movie_details;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,29 +11,28 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.pop.popularmovies.R;
 import com.pop.popularmovies.util.MovieItem;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MovieDetailsActivityFragment extends Fragment {
+public class DetailsActivityFragment extends Fragment {
 
     private MovieItem mMovieItem;
 
-    public MovieDetailsActivityFragment() {
-
+    public DetailsActivityFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        String movieItemJSON = this.getArguments().getString("movie_item");
+        Intent i = getActivity().getIntent();
+        String movieItemJSON = i.getStringExtra("movie_item");
 
         mMovieItem = new Gson().fromJson(movieItemJSON, MovieItem.class);
 
-
-
-        View rootView = inflater.inflate(R.layout.movie_details, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_details, container, false);
 
         TextView movieDetailsTextView = (TextView)rootView.findViewById(R.id.movieDetailsTextView);
         movieDetailsTextView.setText(mMovieItem.getTitle());
@@ -48,6 +48,4 @@ public class MovieDetailsActivityFragment extends Fragment {
 
         return rootView;
     }
-
-
 }

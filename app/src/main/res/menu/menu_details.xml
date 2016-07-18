@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".movie_details.MovieDetailsActivity">
+    tools:context="com.pop.popularmovies.movie_details.DetailsActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

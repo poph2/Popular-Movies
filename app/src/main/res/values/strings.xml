@@ -67,6 +67,6 @@
     <string name="title_activity_movie_details">MovieDetailsActivity</string>
 
 
-
     <string name="movie_thumb_content_description">Movie Thumb Image</string>
+    <string name="title_activity_details">DetailsActivity</string>
 </resources>
