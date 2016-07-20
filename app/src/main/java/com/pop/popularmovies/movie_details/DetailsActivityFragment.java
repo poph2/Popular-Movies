@@ -34,11 +34,17 @@ public class DetailsActivityFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_details, container, false);
 
-        TextView movieDetailsTextView = (TextView)rootView.findViewById(R.id.movieDetailsTextView);
+        TextView movieDetailsTextView = (TextView)rootView.findViewById(R.id.detailsTextView);
         movieDetailsTextView.setText(mMovieItem.getTitle());
 
-        ImageView movieDetailsPosterImageView = (ImageView)rootView.findViewById(R.id.movieDetailsPosterImageView);
-        ImageView movieDetailsBackDropImageView = (ImageView)rootView.findViewById(R.id.movieDetailsBackDropImageView);
+        TextView overviewTextView = (TextView)rootView.findViewById(R.id.detailsOverviewTextView);
+        overviewTextView.setText(mMovieItem.getOverview());
+
+        TextView userRatingTextView = (TextView)rootView.findViewById(R.id.textView3);
+        userRatingTextView.setText(Double.toString(mMovieItem.getVote_average()));
+
+        ImageView movieDetailsPosterImageView = (ImageView)rootView.findViewById(R.id.detailsPosterImageView);
+        ImageView movieDetailsBackDropImageView = (ImageView)rootView.findViewById(R.id.detailsBackDropImageView);
 
         String imgPosterUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getPoster_path();
         Glide.with(getContext()).load(imgPosterUrl).into(movieDetailsPosterImageView);

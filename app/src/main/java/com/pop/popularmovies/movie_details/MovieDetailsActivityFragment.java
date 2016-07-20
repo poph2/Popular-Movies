@@ -35,17 +35,23 @@ public class MovieDetailsActivityFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.movie_details, container, false);
 
-        TextView movieDetailsTextView = (TextView)rootView.findViewById(R.id.movieDetailsTextView);
-        movieDetailsTextView.setText(mMovieItem.getTitle());
+        TextView detailsTextView = (TextView)rootView.findViewById(R.id.detailsTextView);
+        detailsTextView.setText(mMovieItem.getTitle());
 
-        ImageView movieDetailsPosterImageView = (ImageView)rootView.findViewById(R.id.movieDetailsPosterImageView);
-        ImageView movieDetailsBackDropImageView = (ImageView)rootView.findViewById(R.id.movieDetailsBackDropImageView);
+        TextView overviewTextView = (TextView)rootView.findViewById(R.id.detailsOverviewTextView);
+        overviewTextView.setText(" -- " + mMovieItem.getOverview());
+
+        TextView userRatingTextView = (TextView)rootView.findViewById(R.id.textView3);
+        userRatingTextView.setText(Double.toString(mMovieItem.getVote_average()));
+
+        ImageView detailsPosterImageView = (ImageView)rootView.findViewById(R.id.detailsPosterImageView);
+        ImageView detailsBackDropImageView = (ImageView)rootView.findViewById(R.id.detailsBackDropImageView);
 
         String imgPosterUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getPoster_path();
-        Glide.with(getContext()).load(imgPosterUrl).into(movieDetailsPosterImageView);
+        Glide.with(getContext()).load(imgPosterUrl).into(detailsPosterImageView);
 
         String imgBackDropUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getBackdrop_path();
-        Glide.with(getContext()).load(imgBackDropUrl).into(movieDetailsBackDropImageView);
+        Glide.with(getContext()).load(imgBackDropUrl).into(detailsBackDropImageView);
 
         return rootView;
     }

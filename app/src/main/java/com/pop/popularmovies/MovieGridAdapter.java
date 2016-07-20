@@ -77,11 +77,11 @@ public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
         //picture.setImageResource(movieItem.drawableId);
         //name.setText(movieItem.name);
 
-        String imgUrl = "http://image.tmdb.org/t/p/w500" + movieItem.poster_path;
+        String imgUrl = "http://image.tmdb.org/t/p/w500" + movieItem.getPoster_path();
 
         ViewHolder viewHolder = new ViewHolder(v);
         Glide.with(getContext()).load(imgUrl).into(viewHolder.imageView);
-        viewHolder.titleTextView.setText(movieItem.title);
+        viewHolder.titleTextView.setText(movieItem.getTitle());
 
         //loadImage(picture, "http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg");
 

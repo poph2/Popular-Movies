@@ -18,7 +18,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:id="@+id/movieDetailsBackDropImageView"
+                android:id="@+id/detailsBackDropImageView"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
@@ -28,7 +28,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:id="@+id/movieDetailsPosterImageView"
+                android:id="@+id/detailsPosterImageView"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
@@ -43,10 +43,10 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
-                android:id="@+id/movieDetailsTextView"
-                android:layout_alignBottom="@+id/movieDetailsPosterImageView"
-                android:layout_toRightOf="@+id/movieDetailsPosterImageView"
-                android:layout_toEndOf="@+id/movieDetailsPosterImageView"
+                android:id="@+id/detailsTextView"
+                android:layout_alignBottom="@+id/detailsPosterImageView"
+                android:layout_toRightOf="@+id/detailsPosterImageView"
+                android:layout_toEndOf="@+id/detailsPosterImageView"
                 android:layout_marginLeft="10dp" />
 
             <TextView
@@ -56,7 +56,7 @@
                 android:id="@+id/textView2"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/movieDetailsPosterImageView"
+                android:layout_below="@+id/detailsPosterImageView"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>

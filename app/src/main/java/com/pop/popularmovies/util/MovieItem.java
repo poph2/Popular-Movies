@@ -12,11 +12,23 @@ import org.json.JSONObject;
  */
 
 public class MovieItem {
-    public int id;
+    private int id;
 
-    public String title;
-    public String poster_path;
-    public String backdrop_path;
+    private String title;
+    private String poster_path;
+    private String backdrop_path;
+
+    private boolean adult;
+    private String overview;
+    private String release_date;
+    //        "genre_ids":[18],
+    private String original_title;
+    private String original_language;
+    private double popularity;
+    private String vote_count;
+    private boolean video;
+    private double vote_average;
+
     public JSONObject jsonMovieObject;
 
     public static final String LOG_TAG = MovieItem.class.getSimpleName();
@@ -31,6 +43,17 @@ public class MovieItem {
             this.title              = jsonMovieObject.getString("title");
             this.poster_path        = jsonMovieObject.getString("poster_path");
             this.backdrop_path      = jsonMovieObject.getString("backdrop_path");
+
+            this.adult              = jsonMovieObject.getBoolean("adult");
+            this.overview           = jsonMovieObject.getString("overview");
+            this.release_date       = jsonMovieObject.getString("release_date");
+            this.original_title     = jsonMovieObject.getString("original_title");
+            this.original_language  = jsonMovieObject.getString("original_language");
+            this.popularity         = jsonMovieObject.getDouble("popularity");
+            this.vote_count         = jsonMovieObject.getString("vote_count");
+            this.video              = jsonMovieObject.getBoolean("video");
+            this.vote_average       = jsonMovieObject.getDouble("vote_average");
+
         }
         catch(JSONException e) {
             Log.e(LOG_TAG, e.getMessage());
@@ -45,7 +68,18 @@ public class MovieItem {
         this.title          = "";
         this.poster_path    = "";
         this.backdrop_path  = "";
+
+        this.adult              = false;
+        this.overview           = "";
+        this.release_date       = "";
+        this.original_title     = "";
+        this.original_language  = "";
+        this.popularity         = 0.0;
+        this.vote_count         = "";
+        this.video              = false;
+        this.vote_average       = 0.0;
     }
+
 
     public int getId() {
         return id;
@@ -79,11 +113,87 @@ public class MovieItem {
         this.backdrop_path = backdrop_path;
     }
 
+    public boolean isAdult() {
+        return adult;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
+    }
+
+    public String getOriginal_title() {
+        return original_title;
+    }
+
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
+    }
+
+    public String getOriginal_language() {
+        return original_language;
+    }
+
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
+    }
+
+    public double getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(double popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getVote_count() {
+        return vote_count;
+    }
+
+    public void setVote_count(String vote_count) {
+        this.vote_count = vote_count;
+    }
+
+    public boolean isVideo() {
+        return video;
+    }
+
+    public void setVideo(boolean video) {
+        this.video = video;
+    }
+
+    public double getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
+    }
+
     public JSONObject getJsonMovieObject() {
         return jsonMovieObject;
     }
 
     public void setJsonMovieObject(JSONObject jsonMovieObject) {
         this.jsonMovieObject = jsonMovieObject;
+    }
+
+    public static String getLogTag() {
+        return LOG_TAG;
     }
 }
