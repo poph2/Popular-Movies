@@ -19,8 +19,6 @@ import com.pop.popularmovies.util.MovieItem;
  */
 public class DetailsActivityFragment extends Fragment {
 
-    private MovieItem mMovieItem;
-
     public DetailsActivityFragment() {
     }
 
@@ -30,7 +28,7 @@ public class DetailsActivityFragment extends Fragment {
         Intent i = getActivity().getIntent();
         String movieItemJSON = i.getStringExtra("movie_item");
 
-        mMovieItem = new Gson().fromJson(movieItemJSON, MovieItem.class);
+        MovieItem mMovieItem = new Gson().fromJson(movieItemJSON, MovieItem.class);
 
         View rootView = inflater.inflate(R.layout.fragment_details, container, false);
 

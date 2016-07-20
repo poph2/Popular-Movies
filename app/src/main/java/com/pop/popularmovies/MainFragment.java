@@ -71,13 +71,13 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
         return rootView;
     }
 
-    @Override
+    /*@Override
     public void onStart() {
         super.onStart();
         //updateMovies();
-    }
+    }*/
 
-    public void updateMovies() {
+    private void updateMovies() {
         //Toast.makeText(getContext(), "HERE1111", Toast.LENGTH_LONG).show();
         MovieAsyncTask movieAsyncTask = new MovieAsyncTask();
         movieAsyncTask.execute();

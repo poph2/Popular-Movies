@@ -29,7 +29,7 @@ public class MovieItem {
     private boolean video;
     private double vote_average;
 
-    public JSONObject jsonMovieObject;
+    private JSONObject jsonMovieObject;
 
     public static final String LOG_TAG = MovieItem.class.getSimpleName();
 

@@ -19,8 +19,6 @@ import com.pop.popularmovies.util.MovieItem;
  */
 public class MovieDetailsActivityFragment extends Fragment {
 
-    private MovieItem mMovieItem;
-
     public MovieDetailsActivityFragment() {
 
     }
@@ -31,7 +29,7 @@ public class MovieDetailsActivityFragment extends Fragment {
         Intent i = getActivity().getIntent();
         String movieItemJSON = i.getStringExtra("movie_item");
 
-        mMovieItem = new Gson().fromJson(movieItemJSON, MovieItem.class);
+        MovieItem mMovieItem = new Gson().fromJson(movieItemJSON, MovieItem.class);
 
         View rootView = inflater.inflate(R.layout.movie_details, container, false);
 
@@ -39,7 +37,7 @@ public class MovieDetailsActivityFragment extends Fragment {
         detailsTextView.setText(mMovieItem.getTitle());
 
         TextView overviewTextView = (TextView)rootView.findViewById(R.id.detailsOverviewTextView);
-        overviewTextView.setText(" -- " + mMovieItem.getOverview());
+        overviewTextView.setText(mMovieItem.getOverview());
 
         TextView userRatingTextView = (TextView)rootView.findViewById(R.id.textView3);
         userRatingTextView.setText(Double.toString(mMovieItem.getVote_average()));
