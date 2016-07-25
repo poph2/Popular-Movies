@@ -90,10 +90,10 @@ public class APIGetter {
         }
 
         //return moviesJsonStr;
-        return MovieJSONData.jsonData;
+        return MovieJSONData.popularJSONData;
     }
 
     public static String doAction2() {
-        return MovieJSONData.jsonData;
+        return MovieJSONData.popularJSONData;
     }
 }

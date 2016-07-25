@@ -26,6 +26,14 @@
                 android:value="com.pop.popularmovies.MainActivity" />
         </activity>
         <activity
+            android:name=".SettActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.pop.popularmovies.MainActivity" />
+        </activity>
+        <activity
             android:name=".movie_details.MovieDetailsActivity"
             android:label="@string/title_activity_movie_details"
             android:parentActivityName=".MainActivity"
@@ -37,8 +45,8 @@
         <activity
             android:name=".movie_details.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".MainActivity">
+            <!--android:theme="@style/AppTheme.NoActionBar"-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pop.popularmovies.MainActivity" />
