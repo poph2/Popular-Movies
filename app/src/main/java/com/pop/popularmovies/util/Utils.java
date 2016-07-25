@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class Utils {
+class Utils {
 	public static void CopyStream(InputStream is, OutputStream os) {
 		final int buffer_size = 1024;
 		try {

@@ -31,7 +31,7 @@ public class MovieItem {
 
     private JSONObject jsonMovieObject;
 
-    public static final String LOG_TAG = MovieItem.class.getSimpleName();
+    private static final String LOG_TAG = MovieItem.class.getSimpleName();
 
     public MovieItem(JSONObject jsonMovieObject) {
         this();

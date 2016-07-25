@@ -17,9 +17,11 @@ import java.net.URL;
  */
 public class APIGetter {
 
+    private static final String api_key = "";
+
     private static final String LOG_TAG = APIGetter.class.getSimpleName();
 
-    public static String doAction(String api_key, String page) {
+    public static String getJson(String page) {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -31,13 +33,11 @@ public class APIGetter {
             // Construct the URL for the OpenWeatherMap query
             // Possible parameters are avaiable at OWM's forecast API page, at
             // http://openweathermap.org/API#forecast
-            final String FORECAST_BASE_URL = "http://api.themoviedb.org/3/movie/popular?";
+            final String FORECAST_BASE_URL = "http://api.themoviedb.org/3/movie/" + page + "?";
             final String API_KEY_PARAM = "api_key";
-            final String PAGE_PARAM = "page";
 
             Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                     .appendQueryParameter(API_KEY_PARAM, api_key)
-                    .appendQueryParameter(PAGE_PARAM, page)
                     .build();
 
             URL url = new URL(builtUri.toString());
@@ -89,18 +89,24 @@ public class APIGetter {
             }
         }
 
-        //return moviesJsonStr;
-        return MovieJSONData.popularJSONData;
+        return moviesJsonStr;
     }
 
-    public static String doAction2(String sortOrder) {
+    public static String doAction(String sortOrder) {
 
         if(sortOrder.equalsIgnoreCase("popular")) {
+            return getJson("popular");
+        }
+        else {
+            return getJson("top_rated");
+        }
+
+        /*if(sortOrder.equalsIgnoreCase("popular")) {
             return MovieJSONData.popularJSONData;
         }
         else {
             return MovieJSONData.topRatedJSONData;
-        }
+        }*/
 
 
     }

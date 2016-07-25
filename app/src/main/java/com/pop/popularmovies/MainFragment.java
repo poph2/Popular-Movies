@@ -99,7 +99,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
             String sortOrder = getSortOrder();
 
-            String movieJson = APIGetter.doAction2(sortOrder);
+            String movieJson = APIGetter.doAction(sortOrder);
 
             ArrayList<MovieItem> movieItemList = new ArrayList<>();
 
@@ -148,7 +148,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
         }
     }
 
-    public String getSortOrder() {
+    private String getSortOrder() {
 
         return PreferenceManager.getDefaultSharedPreferences(getContext()).getString("sort_by", "popular");
 

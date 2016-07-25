@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Pop Inc
  * Lagos Nigeria
  */
-public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
+class MovieGridAdapter extends ArrayAdapter<MovieItem> {
     private ArrayList<MovieItem> mItems;
     private final LayoutInflater mInflater;
     private final int mLayoutResourceID, mImageResourceID, mTextResourceID;
@@ -64,18 +64,8 @@ public class MovieGridAdapter extends ArrayAdapter<MovieItem> {
             //holder = (ViewHolder) v.getTag();
         }
 
-        //GridItem item = mGridData.get(position);
-        //holder.titleTextView.setText(Html.fromHtml(item.getTitle()));
-
-        //Picasso.with(mContext).load(item.getImage()).into(holder.imageView);
-
-        //picture = (ImageView) v.getTag(R.id.movie_grid_item_imageview);
-        //name = (TextView) v.getTag(R.id.movie_grid_item_textview);
 
         MovieItem movieItem = getItem(i);
-
-        //picture.setImageResource(movieItem.drawableId);
-        //name.setText(movieItem.name);
 
         String imgUrl = "http://image.tmdb.org/t/p/w500" + movieItem.getPoster_path();
 
