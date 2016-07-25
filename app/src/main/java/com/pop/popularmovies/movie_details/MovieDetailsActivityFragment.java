@@ -39,14 +39,14 @@ public class MovieDetailsActivityFragment extends Fragment {
         TextView overviewTextView = (TextView)rootView.findViewById(R.id.detailsOverviewTextView);
         overviewTextView.setText(mMovieItem.getOverview());
 
-        TextView userRatingTextView = (TextView)rootView.findViewById(R.id.textView3);
-        userRatingTextView.setText(Double.toString(mMovieItem.getVote_average()));
+        //TextView userRatingTextView = (TextView)rootView.findViewById(R.id.textView3);
+        //userRatingTextView.setText(Double.toString(mMovieItem.getVote_average()));
 
-        ImageView detailsPosterImageView = (ImageView)rootView.findViewById(R.id.detailsPosterImageView);
+        //ImageView detailsPosterImageView = (ImageView)rootView.findViewById(R.id.detailsPosterImageView);
         ImageView detailsBackDropImageView = (ImageView)rootView.findViewById(R.id.detailsBackDropImageView);
 
-        String imgPosterUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getPoster_path();
-        Glide.with(getContext()).load(imgPosterUrl).into(detailsPosterImageView);
+        //String imgPosterUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getPoster_path();
+        //Glide.with(getContext()).load(imgPosterUrl).into(detailsPosterImageView);
 
         String imgBackDropUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getBackdrop_path();
         Glide.with(getContext()).load(imgBackDropUrl).into(detailsBackDropImageView);
