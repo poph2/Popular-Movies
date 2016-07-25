@@ -3,6 +3,7 @@ package com.pop.popularmovies;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,21 +43,12 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
         ArrayList<MovieItem> movieItemList = new ArrayList<>();
 
-        //movieItemList.add(new MovieItem("Red",          R.drawable.red));
-        //movieItemList.add(new MovieItem("Aquamarine",   R.drawable.aquamarine));
-        //movieItemList.add(new MovieItem("Bittersweet",  R.drawable.bittersweet));
-        //movieItemList.add(new MovieItem("Deep Lilac",   R.drawable.deep_lilac));
-        //movieItemList.add(new MovieItem("Gold",         R.drawable.gold));
-        //movieItemList.add(new MovieItem("Azure",        R.drawable.azure));
-
         mMovieAdapter = new MovieGridAdapter(
                 getActivity(),
                 R.layout.movie_grid_item,
                 R.id.movie_grid_item_imageview,
                 R.id.movie_grid_item_textview,
                 movieItemList);
-
-
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
@@ -65,17 +57,15 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
         gridView.setOnItemClickListener(this);
 
-        updateMovies();
-
         // Inflate the layout for this fragment
         return rootView;
     }
 
-    /*@Override
-    public void onStart() {
-        super.onStart();
-        //updateMovies();
-    }*/
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateMovies();
+    }
 
     private void updateMovies() {
         //Toast.makeText(getContext(), "HERE1111", Toast.LENGTH_LONG).show();
@@ -85,7 +75,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
 
         //Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_LONG).show();
 
@@ -108,7 +97,9 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
         @Override
         protected ArrayList<MovieItem> doInBackground(Void... params) {
 
-            String movieJson = APIGetter.doAction2();
+            String sortOrder = getSortOrder();
+
+            String movieJson = APIGetter.doAction2(sortOrder);
 
             ArrayList<MovieItem> movieItemList = new ArrayList<>();
 
@@ -157,5 +148,10 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
         }
     }
 
+    public String getSortOrder() {
+
+        return PreferenceManager.getDefaultSharedPreferences(getContext()).getString("sort_by", "popular");
+
+    }
 
 }

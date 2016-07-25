@@ -93,7 +93,17 @@ public class APIGetter {
         return MovieJSONData.popularJSONData;
     }
 
-    public static String doAction2() {
-        return MovieJSONData.popularJSONData;
+    public static String doAction2(String sortOrder) {
+
+        if(sortOrder.equalsIgnoreCase("popular")) {
+            return MovieJSONData.popularJSONData;
+        }
+        else {
+            return MovieJSONData.topRatedJSONData;
+        }
+
+
     }
+
+
 }
