@@ -50,8 +50,6 @@ class MovieGridAdapter extends ArrayAdapter<MovieItem> {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = view;
 
-        //ViewHolder holder;
-
         ImageView picture;
         TextView name;
 
@@ -60,10 +58,6 @@ class MovieGridAdapter extends ArrayAdapter<MovieItem> {
             v.setTag(R.id.movie_grid_item_imageview, v.findViewById(R.id.movie_grid_item_imageview));
             v.setTag(R.id.movie_grid_item_textview, v.findViewById(R.id.movie_grid_item_textview));
         }
-        else {
-            //holder = (ViewHolder) v.getTag();
-        }
-
 
         MovieItem movieItem = getItem(i);
 
@@ -72,8 +66,6 @@ class MovieGridAdapter extends ArrayAdapter<MovieItem> {
         ViewHolder viewHolder = new ViewHolder(v);
         Glide.with(getContext()).load(imgUrl).into(viewHolder.imageView);
         viewHolder.titleTextView.setText(movieItem.getTitle());
-
-        //loadImage(picture, "http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg");
 
         return v;
     }

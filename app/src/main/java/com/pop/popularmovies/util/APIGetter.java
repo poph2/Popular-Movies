@@ -42,8 +42,6 @@ public class APIGetter {
 
             URL url = new URL(builtUri.toString());
 
-            //Log.v(LOG_TAG, "Built URI " + builtUri.toString());
-
             // Create the request to OpenWeatherMap, and open the connection
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -100,14 +98,6 @@ public class APIGetter {
         else {
             return getJson("top_rated");
         }
-
-        /*if(sortOrder.equalsIgnoreCase("popular")) {
-            return MovieJSONData.popularJSONData;
-        }
-        else {
-            return MovieJSONData.topRatedJSONData;
-        }*/
-
 
     }
 

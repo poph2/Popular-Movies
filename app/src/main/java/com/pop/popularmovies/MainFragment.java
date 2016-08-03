@@ -82,16 +82,12 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        //Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_LONG).show();
-
         Intent i = new Intent(getContext(), DetailsActivity.class);
         MovieItem movieItem = mMovieAdapter.getItem(position);
 
         String jsonText = new Gson().toJson(movieItem);
 
         i.putExtra("movie_item", jsonText);
-
-        //Toast.makeText(getContext(), jsonText, Toast.LENGTH_LONG).show();
 
         startActivity(i);
     }
@@ -109,16 +105,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
             ArrayList<MovieItem> movieItemList = new ArrayList<>();
 
-            //movieItemList.add(new MovieItem("Red",          R.drawable.red));
-            //movieItemList.add(new MovieItem("Aquamarine",   R.drawable.aquamarine));
-            //movieItemList.add(new MovieItem("Bittersweet",  R.drawable.bittersweet));
-            //movieItemList.add(new MovieItem("Deep Lilac",   R.drawable.deep_lilac));
-            //movieItemList.add(new MovieItem("Gold",         R.drawable.gold));
-            //movieItemList.add(new MovieItem("Azure",        R.drawable.azure));
-
             try {
                 movieItemList = getMovieItemsFromJson(movieJson);
-                //Toast.makeText(getActivity(), "HERE", Toast.LENGTH_LONG).show();
             }
             catch (JSONException e) {
                 Log.e(LOG_TAG, e.getMessage(), e);
