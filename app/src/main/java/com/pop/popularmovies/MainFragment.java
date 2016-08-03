@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.pop.popularmovies.movie_details.DetailsActivity;
@@ -27,15 +26,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-
 
 public class MainFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     public static String LOAD_MOVIES_INTENT = "com.pop.popularmovies.action.RELOAD_DATA_INTENT";
-
-
-    @BindView(R.id.movieDetailsTextView) TextView movieDetailsTextView;
 
     IntentFilter filter;
     BroadcastReceiver broadcastReceiver;
@@ -104,14 +98,14 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Intent i = new Intent(getContext(), DetailsActivity.class);
-        MovieItem movieItem = mMovieAdapter.getItem(position);
+            Intent i = new Intent(getContext(), DetailsActivity.class);
+            MovieItem movieItem = mMovieAdapter.getItem(position);
 
-        String jsonText = new Gson().toJson(movieItem);
+            String jsonText = new Gson().toJson(movieItem);
 
-        i.putExtra("movie_item", jsonText);
+            i.putExtra("movie_item", jsonText);
 
-        startActivity(i);
+            startActivity(i);
     }
 
     class MovieAsyncTask extends AsyncTask<Void, Void, ArrayList<MovieItem>> {
