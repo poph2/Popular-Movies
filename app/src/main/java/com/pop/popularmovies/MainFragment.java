@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.pop.popularmovies.movie_details.DetailsActivity;
@@ -23,8 +24,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 
 public class MainFragment extends Fragment implements AdapterView.OnItemClickListener{
+
+
+    @BindView(R.id.movieDetailsTextView) TextView movieDetailsTextView;
 
     private MovieGridAdapter mMovieAdapter;
 

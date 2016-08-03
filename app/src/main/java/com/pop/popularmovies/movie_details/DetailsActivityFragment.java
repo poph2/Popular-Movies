@@ -14,10 +14,18 @@ import com.google.gson.Gson;
 import com.pop.popularmovies.R;
 import com.pop.popularmovies.util.MovieItem;
 
+import butterknife.BindView;
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class DetailsActivityFragment extends Fragment {
+
+    @BindView(R.id.movieDetailsTextView)        TextView movieDetailsTextView;
+    @BindView(R.id.detailsOverviewTextView)     TextView detailsOverviewTextView;
+    @BindView(R.id.userRatingTextView)          TextView userRatingTextView;
+    @BindView(R.id.releaseDateTextView)         TextView releaseDateTextView;
+    @BindView(R.id.detailsBackDropImageView)    ImageView detailsBackDropImageView;
 
     public DetailsActivityFragment() {
     }
@@ -34,30 +42,16 @@ public class DetailsActivityFragment extends Fragment {
 
         getActivity().setTitle(mMovieItem.getTitle());
 
-        TextView movieDetailsTextView = (TextView)rootView.findViewById(R.id.detailsTextView);
         movieDetailsTextView.setText(mMovieItem.getTitle());
 
-        TextView overviewTextView = (TextView)rootView.findViewById(R.id.detailsOverviewTextView);
-        overviewTextView.setText(mMovieItem.getOverview());
+        detailsOverviewTextView.setText(mMovieItem.getOverview());
 
-        TextView userRatingTextView = (TextView)rootView.findViewById(R.id.userRatingTextView);
         userRatingTextView.setText(Double.toString(mMovieItem.getVote_average()));
 
-        //Date date = Utils.getDate(mMovieItem.getRelease_date());
-        //DateFormat formatter = new SimpleDateFormat("DD/MMM/YYYY");
-        //String formattedDateString = formatter.format(date);
-
-        TextView releaseDateTextView = (TextView)rootView.findViewById(R.id.releaseDateTextView);
         releaseDateTextView.setText(mMovieItem.getRelease_date());
 
-        //ImageView movieDetailsPosterImageView = (ImageView)rootView.findViewById(R.id.detailsPosterImageView);
-        ImageView movieDetailsBackDropImageView = (ImageView)rootView.findViewById(R.id.detailsBackDropImageView);
-
-        //String imgPosterUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getPoster_path();
-        //Glide.with(getContext()).load(imgPosterUrl).into(movieDetailsPosterImageView);
-
         String imgBackDropUrl = "http://image.tmdb.org/t/p/w500" + mMovieItem.getBackdrop_path();
-        Glide.with(getContext()).load(imgBackDropUrl).into(movieDetailsBackDropImageView);
+        Glide.with(getContext()).load(imgBackDropUrl).into(detailsBackDropImageView);
 
         return rootView;
     }
