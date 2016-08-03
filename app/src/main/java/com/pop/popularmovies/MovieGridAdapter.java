@@ -79,4 +79,8 @@ class MovieGridAdapter extends ArrayAdapter<MovieItem> {
             titleTextView = (TextView) view.findViewById(R.id.movie_grid_item_textview);
         }
     }
+
+    public ArrayList<MovieItem> getmItems() {
+        return mItems;
+    }
 }

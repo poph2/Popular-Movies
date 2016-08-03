@@ -1,5 +1,7 @@
 package com.pop.popularmovies;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,12 +31,17 @@ import butterknife.BindView;
 
 public class MainFragment extends Fragment implements AdapterView.OnItemClickListener{
 
+    public static String LOAD_MOVIES_INTENT = "com.pop.popularmovies.action.RELOAD_DATA_INTENT";
+
 
     @BindView(R.id.movieDetailsTextView) TextView movieDetailsTextView;
+
+    BroadcastReceiver broadcastReceiver;
 
     private MovieGridAdapter mMovieAdapter;
 
     public MainFragment() {
+
     }
 
     @Override
@@ -62,6 +69,16 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
         gridView.setAdapter(mMovieAdapter);
 
         gridView.setOnItemClickListener(this);
+
+        broadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if(mMovieAdapter.getmItems().size() == 0) {
+                    updateMovies();
+                }
+            }
+        };
 
         // Inflate the layout for this fragment
         return rootView;
