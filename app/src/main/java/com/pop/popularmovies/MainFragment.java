@@ -3,6 +3,7 @@ package com.pop.popularmovies;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -36,6 +37,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @BindView(R.id.movieDetailsTextView) TextView movieDetailsTextView;
 
+    IntentFilter filter;
     BroadcastReceiver broadcastReceiver;
 
     private MovieGridAdapter mMovieAdapter;
@@ -70,15 +72,18 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
         gridView.setOnItemClickListener(this);
 
+        filter = new IntentFilter(LOAD_MOVIES_INTENT);
         broadcastReceiver = new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                if(mMovieAdapter.getmItems().size() == 0) {
+
+                if(mMovieAdapter.getmItems().size() == 0) {     //Only load on network change if no movies have been loaded initially
                     updateMovies();
                 }
             }
         };
+        getActivity().registerReceiver(broadcastReceiver, filter);
 
         // Inflate the layout for this fragment
         return rootView;
@@ -121,6 +126,10 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
             String movieJson = APIGetter.doAction(sortOrder);
 
             ArrayList<MovieItem> movieItemList = new ArrayList<>();
+
+            if(movieJson == null) {
+                return null;
+            }
 
             try {
                 movieItemList = getMovieItemsFromJson(movieJson);

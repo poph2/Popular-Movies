@@ -23,6 +23,8 @@ public class InternetIntentReceiver extends BroadcastReceiver {
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
         Intent i = new Intent(MainFragment.LOAD_MOVIES_INTENT);
-        context.sendBroadcast(intent);
+        context.sendBroadcast(i);
+
+
     }
 }
