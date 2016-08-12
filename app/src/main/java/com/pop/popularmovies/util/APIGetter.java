@@ -21,7 +21,19 @@ public class APIGetter {
 
     private static final String LOG_TAG = APIGetter.class.getSimpleName();
 
-    public static String getJson(String page) {
+    final String BASE_URL = "http://api.themoviedb.org/3/movie/";
+    final String level_1_account    = "account";
+
+    final String PARAM_API_KEY      = "api_key";
+    final String PARAM_SESSION_ID   = "session_id";
+    final String PARAM_PAGE         = "page";
+    final String PARAM_LANGUAGE     = "language";
+    final String PARAM_SORT_BY      = "sort_by";
+    final String PARAM_MEDIA_TYPE   = "media_type";
+    final String PARAM_MEDIA_ID     = "media_id";
+    final String PARAM_FAVORITE     = "favorite";
+
+    private static String getJson(String page) {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;

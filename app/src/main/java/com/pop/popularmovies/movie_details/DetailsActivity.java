@@ -13,6 +13,12 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_details);
 
+        if(savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.movie_detail_container, new DetailsActivityFragment())
+                    .commit();
+        }
+
         setupActionBar();
 
     }

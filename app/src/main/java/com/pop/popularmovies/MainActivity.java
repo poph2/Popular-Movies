@@ -6,17 +6,27 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.pop.popularmovies.movie_details.DetailsActivityFragment;
+
 public class MainActivity extends AppCompatActivity {
+
+    boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                .beginTransaction()
-                    .add(R.id.container, new MainFragment())
+
+        if(findViewById(R.id.movie_detail_container) != null) {
+            mTwoPane = true;
+            if(savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.movie_detail_container, new DetailsActivityFragment())
                         .commit();
+            }
+        }
+        else {
+            mTwoPane = false;
         }
     }
 

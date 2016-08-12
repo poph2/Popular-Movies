@@ -29,10 +29,10 @@ import java.util.ArrayList;
 
 public class MainFragment extends Fragment implements AdapterView.OnItemClickListener{
 
-    public static String LOAD_MOVIES_INTENT = "com.pop.popularmovies.action.RELOAD_DATA_INTENT";
+    public static final String LOAD_MOVIES_INTENT = "com.pop.popularmovies.action.RELOAD_DATA_INTENT";
 
-    IntentFilter filter;
-    BroadcastReceiver broadcastReceiver;
+    private IntentFilter filter;
+    private BroadcastReceiver broadcastReceiver;
 
     private MovieGridAdapter mMovieAdapter;
 

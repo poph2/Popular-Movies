@@ -50,8 +50,8 @@ class MovieGridAdapter extends ArrayAdapter<MovieItem> {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = view;
 
-        ImageView picture;
-        TextView name;
+        //ImageView picture;
+        //TextView name;
 
         if (v == null) {
             v = mInflater.inflate(R.layout.movie_grid_item, viewGroup, false);
