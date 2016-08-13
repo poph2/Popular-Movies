@@ -1,7 +1,6 @@
 package com.pop.popularmovies.movie_details;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -44,9 +43,15 @@ public class DetailsActivityFragment extends Fragment {
 
         //if()
 
-        Intent i = getActivity().getIntent();
-        String movieItemJSON = i.getStringExtra("movie_item");
+//        Intent i = getActivity().getIntent();
+//        String movieItemJSON = i.getStringExtra("movie_item");
 
+        String movieItemJSON = null;
+
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            movieItemJSON = arguments.getString("movie_item");
+        }
         if(movieItemJSON != null) {
 
             MovieItem mMovieItem = new Gson().fromJson(movieItemJSON, MovieItem.class);

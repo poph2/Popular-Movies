@@ -1,5 +1,6 @@
 package com.pop.popularmovies.movie_details;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,22 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.content_details);
 
         if(savedInstanceState == null) {
+
+            Intent i = getIntent();
+            String jsonText = i.getStringExtra("movie_item");
+
+            Bundle args = new Bundle();
+            args.putString("movie_item", jsonText);
+
+            DetailsActivityFragment fragment = new DetailsActivityFragment();
+            fragment.setArguments(args);
+
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.movie_detail_container, new DetailsActivityFragment())
+                    .add(R.id.movie_detail_container, fragment)
                     .commit();
         }
 
-        setupActionBar();
+        //setupActionBar();
 
     }
 

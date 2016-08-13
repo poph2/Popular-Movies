@@ -15,9 +15,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.google.gson.Gson;
-import com.pop.popularmovies.movie_details.DetailsActivity;
 import com.pop.popularmovies.util.APIGetter;
+import com.pop.popularmovies.util.CallBack;
 import com.pop.popularmovies.util.MovieItem;
 
 import org.json.JSONArray;
@@ -97,15 +96,17 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        MovieItem movieItem = mMovieAdapter.getItem(position);
+        ((CallBack)getActivity()).onItemSelected(movieItem);
 
-            Intent i = new Intent(getContext(), DetailsActivity.class);
-            MovieItem movieItem = mMovieAdapter.getItem(position);
-
-            String jsonText = new Gson().toJson(movieItem);
-
-            i.putExtra("movie_item", jsonText);
-
-            startActivity(i);
+//            Intent i = new Intent(getContext(), DetailsActivity.class);
+//            MovieItem movieItem = mMovieAdapter.getItem(position);
+//
+//            String jsonText = new Gson().toJson(movieItem);
+//
+//            i.putExtra("movie_item", jsonText);
+//
+//            startActivity(i);
     }
 
     class MovieAsyncTask extends AsyncTask<Void, Void, ArrayList<MovieItem>> {
