@@ -126,4 +126,13 @@ public class APIGetter {
         //return "{\"id\":297761,\"results\":[{\"id\":\"57878d7592514137c9005476\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"JsbG97hO6lA\",\"name\":\"Harley Quinn Therapy\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Featurette\"},{\"id\":\"5791d255c3a36874640010bb\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"NW0lOo9_8Bw\",\"name\":\"Team Suicide Squad\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Featurette\"},{\"id\":\"57950ed1c3a3681f31003941\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"PLLQK9la6Go\",\"name\":\"Comic Con First Look\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Trailer\"},{\"id\":\"57975b61c3a36865ae001ece\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"CmRih_VtVAs\",\"name\":\"Official Trailer 1\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Trailer\"},{\"id\":\"57950e679251412ba3000cdd\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"5AwUdTIbA8I\",\"name\":\"Blitz Trailer\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Trailer\"}]}";
     }
 
+    public static String getReview(String id) {
+
+        String urlStr = "http://api.themoviedb.org/3/movie/" + id + "/reviews?";
+
+        return getJson(urlStr);
+
+        //return "{\"id\":297761,\"results\":[{\"id\":\"57878d7592514137c9005476\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"JsbG97hO6lA\",\"name\":\"Harley Quinn Therapy\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Featurette\"},{\"id\":\"5791d255c3a36874640010bb\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"NW0lOo9_8Bw\",\"name\":\"Team Suicide Squad\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Featurette\"},{\"id\":\"57950ed1c3a3681f31003941\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"PLLQK9la6Go\",\"name\":\"Comic Con First Look\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Trailer\"},{\"id\":\"57975b61c3a36865ae001ece\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"CmRih_VtVAs\",\"name\":\"Official Trailer 1\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Trailer\"},{\"id\":\"57950e679251412ba3000cdd\",\"iso_639_1\":\"en\",\"iso_3166_1\":\"US\",\"key\":\"5AwUdTIbA8I\",\"name\":\"Blitz Trailer\",\"site\":\"YouTube\",\"size\":1080,\"type\":\"Trailer\"}]}";
+    }
+
 }
