@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import com.google.gson.Gson;
 import com.pop.popularmovies.movie_details.DetailsActivity;
-import com.pop.popularmovies.movie_details.DetailsActivityFragment;
+import com.pop.popularmovies.movie_details.DetailsFragment;
 import com.pop.popularmovies.util.CallBack;
 import com.pop.popularmovies.util.MovieItem;
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements CallBack {
             mTwoPane = true;
             if(savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.movie_detail_container, new DetailsActivityFragment(), DETAIL_FRAGMENT_TAG)
+                        .add(R.id.movie_detail_container, new DetailsFragment(), DETAIL_FRAGMENT_TAG)
                         .commit();
             }
         }
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements CallBack {
             Bundle args = new Bundle();
             args.putString("movie_item", jsonText);
 
-            DetailsActivityFragment fragment = new DetailsActivityFragment();
+            DetailsFragment fragment = new DetailsFragment();
             fragment.setArguments(args);
 
             getSupportFragmentManager().beginTransaction()

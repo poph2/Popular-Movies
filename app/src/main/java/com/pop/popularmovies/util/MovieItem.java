@@ -5,6 +5,8 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by Pop H2 on 7/6/2016.
  * Pop Inc
@@ -32,6 +34,8 @@ public class MovieItem {
     private JSONObject jsonMovieObject;
 
     private static final String LOG_TAG = MovieItem.class.getSimpleName();
+
+    private ArrayList<MovieTrailer> movieTrailers;
 
     public MovieItem(JSONObject jsonMovieObject) {
         this();
@@ -78,6 +82,8 @@ public class MovieItem {
         this.vote_count         = "";
         this.video              = false;
         this.vote_average       = 0.0;
+
+        this.movieTrailers      = new ArrayList<>();
     }
 
 
@@ -195,5 +201,13 @@ public class MovieItem {
 
     public static String getLogTag() {
         return LOG_TAG;
+    }
+
+    public ArrayList<MovieTrailer> getMovieTrailers() {
+        return movieTrailers;
+    }
+
+    public void setMovieTrailers(ArrayList<MovieTrailer> movieTrailers) {
+        this.movieTrailers = movieTrailers;
     }
 }

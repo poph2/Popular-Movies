@@ -118,7 +118,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
             String sortOrder = getSortOrder();
 
-            String movieJson = APIGetter.doAction(sortOrder);
+            String movieJson = APIGetter.getMovies(sortOrder);
 
             ArrayList<MovieItem> movieItemList = new ArrayList<>();
 

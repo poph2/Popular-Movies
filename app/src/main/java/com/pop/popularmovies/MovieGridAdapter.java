@@ -23,7 +23,7 @@ class MovieGridAdapter extends ArrayAdapter<MovieItem> {
     private final LayoutInflater mInflater;
     private final int mLayoutResourceID, mImageResourceID, mTextResourceID;
 
-    private final Object mLock = new Object();
+//    private final Object mLock = new Object();
 
     public MovieGridAdapter(Context context, int layoutResourceID, int imageResourceID, int textResourceID, ArrayList<MovieItem> itemList) {
         super(context, layoutResourceID, textResourceID, itemList);

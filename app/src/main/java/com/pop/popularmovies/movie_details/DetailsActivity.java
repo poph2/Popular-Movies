@@ -12,7 +12,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_details);
+        setContentView(R.layout.activity_details);
 
         if(savedInstanceState == null) {
 
@@ -22,7 +22,7 @@ public class DetailsActivity extends AppCompatActivity {
             Bundle args = new Bundle();
             args.putString("movie_item", jsonText);
 
-            DetailsActivityFragment fragment = new DetailsActivityFragment();
+            DetailsFragment fragment = new DetailsFragment();
             fragment.setArguments(args);
 
             getSupportFragmentManager().beginTransaction()

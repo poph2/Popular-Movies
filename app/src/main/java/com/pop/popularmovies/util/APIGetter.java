@@ -33,22 +33,19 @@ public class APIGetter {
     final String PARAM_MEDIA_ID     = "media_id";
     final String PARAM_FAVORITE     = "favorite";
 
-    private static String getJson(String page) {
+    private static String getJson(String urlStr) {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
 
         // Will contain the raw JSON response as a string.
-        String moviesJsonStr = null;
+        String jsonStr = null;
 
         try {
-            // Construct the URL for the OpenWeatherMap query
-            // Possible parameters are avaiable at OWM's forecast API page, at
-            // http://openweathermap.org/API#forecast
-            final String FORECAST_BASE_URL = "http://api.themoviedb.org/3/movie/" + page + "?";
+            //final String FORECAST_BASE_URL = "http://api.themoviedb.org/3/movie/" + page + "?";
             final String API_KEY_PARAM = "api_key";
 
-            Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
+            Uri builtUri = Uri.parse(urlStr).buildUpon()
                     .appendQueryParameter(API_KEY_PARAM, api_key)
                     .build();
 
@@ -80,7 +77,7 @@ public class APIGetter {
                 // Stream was empty.  No point in parsing.
                 return null;
             }
-            moviesJsonStr = buffer.toString();
+            jsonStr = buffer.toString();
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error ", e);
             // If the code didn't successfully get the weather data, there's no point in attemping
@@ -99,19 +96,31 @@ public class APIGetter {
             }
         }
 
-        return moviesJsonStr;
+        return jsonStr;
     }
 
-    public static String doAction(String sortOrder) {
+    public static String getMovies(String sortOrder) {
+
+        String page = "";
 
         if(sortOrder.equalsIgnoreCase("popular")) {
-            return getJson("popular");
+            page = "popular";
         }
         else {
-            return getJson("top_rated");
+            page = "top_rated";
         }
+
+        String urlStr = "http://api.themoviedb.org/3/movie/" + page + "?";
+
+        return getJson(urlStr);
 
     }
 
+    public static String getTrailer(String id) {
+
+        String urlStr = "http://api.themoviedb.org/3/movie/" + id + "/videos?";
+
+        return getJson(urlStr);
+    }
 
 }
