@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class MainFragment extends Fragment implements AdapterView.OnItemClickListener{
+public class MainFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     public static final String LOAD_MOVIES_INTENT = "com.pop.popularmovies.action.RELOAD_DATA_INTENT";
 
