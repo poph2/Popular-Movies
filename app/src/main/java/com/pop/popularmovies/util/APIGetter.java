@@ -22,6 +22,7 @@ public class APIGetter {
     private static final String LOG_TAG = APIGetter.class.getSimpleName();
 
     final String BASE_URL = "http://api.themoviedb.org/3/movie/";
+
     final String level_1_account    = "account";
 
     final String PARAM_API_KEY      = "api_key";
