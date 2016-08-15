@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/trailer_image_view"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
-        android:src="@mipmap/ic_launcher" />
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/trailer_text_textview"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/trailer_image_view"
-        android:layout_toEndOf="@+id/trailer_image_view" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_image_view"
+            android:src="@drawable/ic_account_box_black_18dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/trailer_source_textview"
-        android:layout_below="@+id/trailer_text_textview"
-        android:layout_toRightOf="@+id/trailer_image_view"
-        android:layout_toEndOf="@+id/trailer_image_view" />
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/review_author_textview"
+            android:layout_alignTop="@+id/review_image_view"
+            android:layout_toEndOf="@+id/review_image_view" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/review_content_textview"
+            android:layout_below="@+id/trailer_text_textview"
+            android:layout_toRightOf="@+id/trailer_image_view"
+            android:layout_toEndOf="@+id/trailer_image_view" />
+    </FrameLayout>
+</LinearLayout>

@@ -22,17 +22,17 @@ public class MovieReviewAdapter extends ArrayAdapter<MovieReview> {
 
     private ArrayList<MovieReview> mItems;
     private final LayoutInflater mInflater;
-    private final int mLayoutResourceID, mImageResourceID, mTextTitleResourceID, mTextSourceResourceID;
+    private final int mLayoutResourceID, mImageResourceID, mTextAuthorResourceID, mTextContentResourceID;
 
-    public MovieReviewAdapter(Context context, int layoutResourceID, int imageResourceID, int textTitleResourceID, int textSourceResourceID, ArrayList<MovieReview> itemList) {
+    public MovieReviewAdapter(Context context, int layoutResourceID, int imageResourceID, int textAuthorResourceID, int textContentResourceID, ArrayList<MovieReview> itemList) {
 
-        super(context, layoutResourceID, textTitleResourceID);
+        super(context, layoutResourceID, textAuthorResourceID);
 
         mInflater = LayoutInflater.from(context);
         mLayoutResourceID = layoutResourceID;
         mImageResourceID = imageResourceID;
-        mTextTitleResourceID = textTitleResourceID;
-        mTextSourceResourceID = textSourceResourceID;
+        mTextAuthorResourceID = textAuthorResourceID;
+        mTextContentResourceID = textContentResourceID;
         mItems = itemList;
     }
 
@@ -44,31 +44,31 @@ public class MovieReviewAdapter extends ArrayAdapter<MovieReview> {
         //TextView name;
 
         if (v == null) {
-            v = mInflater.inflate(R.layout.movie_trailer_list_item, viewGroup, false);
-            v.setTag(R.id.trailer_image_view, v.findViewById(R.id.trailer_image_view));
-            v.setTag(R.id.trailer_text_textview, v.findViewById(R.id.trailer_text_textview));
-            v.setTag(R.id.trailer_source_textview, v.findViewById(R.id.trailer_source_textview));
+            v = mInflater.inflate(mLayoutResourceID, viewGroup, false);
+            v.setTag(mImageResourceID, v.findViewById(mImageResourceID));
+            v.setTag(mTextAuthorResourceID, v.findViewById(mTextAuthorResourceID));
+            v.setTag(mTextContentResourceID, v.findViewById(mTextContentResourceID));
         }
 
-        MovieReview movieTrailer = getItem(i);
+        MovieReview movieReview = getItem(i);
 
         ViewHolder viewHolder = new ViewHolder(v);
 
-        //viewHolder.titleTextView.setText(movieTrailer.getName());
-        //viewHolder.sourceTextView.setText(movieTrailer.getSite());
+        viewHolder.authorTextView.setText(movieReview.getAuthor());
+        viewHolder.contentTextView.setText(movieReview.getContent());
 
         return v;
     }
 
     static class ViewHolder {
-        final TextView titleTextView;
-        final TextView sourceTextView;
+        final TextView authorTextView;
+        final TextView contentTextView;
         final ImageView imageView;
 
         public ViewHolder(View view) {
-            imageView = (ImageView) view.findViewById(R.id.trailer_image_view);
-            titleTextView = (TextView) view.findViewById(R.id.trailer_text_textview);
-            sourceTextView = (TextView) view.findViewById(R.id.trailer_source_textview);
+            imageView = (ImageView) view.findViewById(R.id.review_image_view);
+            authorTextView = (TextView) view.findViewById(R.id.review_author_textview);
+            contentTextView = (TextView) view.findViewById(R.id.review_content_textview);
         }
     }
 
