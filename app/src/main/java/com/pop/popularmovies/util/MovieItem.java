@@ -36,6 +36,7 @@ public class MovieItem {
     private static final String LOG_TAG = MovieItem.class.getSimpleName();
 
     private ArrayList<MovieTrailer> movieTrailers;
+    private ArrayList<MovieReview> movieReviews;
 
     public MovieItem(JSONObject jsonMovieObject) {
         this();
@@ -84,6 +85,7 @@ public class MovieItem {
         this.vote_average       = 0.0;
 
         this.movieTrailers      = new ArrayList<>();
+        this.movieReviews       = new ArrayList<>();
     }
 
 
@@ -209,5 +211,13 @@ public class MovieItem {
 
     public void setMovieTrailers(ArrayList<MovieTrailer> movieTrailers) {
         this.movieTrailers = movieTrailers;
+    }
+
+    public ArrayList<MovieReview> getMovieReviews() {
+        return movieReviews;
+    }
+
+    public void setMovieReviews(ArrayList<MovieReview> movieReviews) {
+        this.movieReviews = movieReviews;
     }
 }

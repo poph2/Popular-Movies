@@ -3,6 +3,7 @@ package com.pop.popularmovies.movie_details;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import com.google.gson.Gson;
 import com.pop.popularmovies.R;
 import com.pop.popularmovies.util.APIGetter;
 import com.pop.popularmovies.util.MovieItem;
+import com.pop.popularmovies.util.MoviePreference;
 import com.pop.popularmovies.util.MovieReview;
 import com.pop.popularmovies.util.MovieTrailer;
 
@@ -62,6 +64,10 @@ public class DetailsFragment extends Fragment {
     MovieTrailerAdapter mMovieTrailerAdapter;
     MovieReviewAdapter mMovieReviewAdapter;
 
+    Context context;
+
+    MoviePreference moviePreference;
+
     public DetailsFragment() {
     }
 
@@ -89,6 +95,11 @@ public class DetailsFragment extends Fragment {
                 R.id.review_content_textview,
                 mMovieReviewList);
 
+        context = getContext();
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(MoviePreference.PREF_NAME, context.MODE_PRIVATE);
+        moviePreference = new MoviePreference(sharedPreferences);
+
         Bundle arguments = getArguments();
         if (arguments != null) {
             movieItemJSON = arguments.getString("movie_item");
@@ -99,6 +110,11 @@ public class DetailsFragment extends Fragment {
 
             View rootView = inflater.inflate(R.layout.fragment_details, container, false);
             ButterKnife.bind(this, rootView);
+
+            if(moviePreference.searchForMovieItem(mMovieItem)) {
+                detailsFavoriteImageButton.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
+                fav = true;
+            }
 
             //ListView listView = (ListView) rootView.findViewById(R.id.trailerListView);
             trailerListView.setAdapter(mMovieTrailerAdapter);
@@ -145,6 +161,7 @@ public class DetailsFragment extends Fragment {
                 Toast.makeText(getContext(), "No internet connection. Could not load Image.", Toast.LENGTH_SHORT).show();
             }
 
+
             MovieTrailerAsyncTask movieTrailerAsyncTask = new MovieTrailerAsyncTask();
             movieTrailerAsyncTask.execute();
 
@@ -168,10 +185,12 @@ public class DetailsFragment extends Fragment {
 
     public void favoriteButtonClicked() {
         if(fav) {
-            detailsFavoriteImageButton.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
+            detailsFavoriteImageButton.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
+            moviePreference.deleteMovieItem(mMovieItem);
         }
         else {
-            detailsFavoriteImageButton.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
+            detailsFavoriteImageButton.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
+            moviePreference.addMovieItem(mMovieItem);
         }
         fav = !fav;
     }
@@ -230,6 +249,7 @@ public class DetailsFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<MovieTrailer> movieTrailers) {
             if (movieTrailers != null) {
+                mMovieItem.setMovieTrailers(movieTrailers);
                 mMovieTrailerAdapter.clear();
                 for(MovieTrailer movieTrailer : movieTrailers) {
                     mMovieTrailerAdapter.add(movieTrailer);
@@ -302,6 +322,7 @@ public class DetailsFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<MovieReview> movieReviews) {
             if (movieReviews != null) {
+                mMovieItem.setMovieReviews(movieReviews);
                 mMovieReviewAdapter.clear();
                 for(MovieReview movieReview : movieReviews) {
                     mMovieReviewAdapter.add(movieReview);

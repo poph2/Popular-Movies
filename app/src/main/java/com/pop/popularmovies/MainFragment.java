@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -18,6 +19,7 @@ import android.widget.GridView;
 import com.pop.popularmovies.util.APIGetter;
 import com.pop.popularmovies.util.CallBack;
 import com.pop.popularmovies.util.MovieItem;
+import com.pop.popularmovies.util.MoviePreference;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -118,20 +120,27 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
             String sortOrder = getSortOrder();
 
-            String movieJson = APIGetter.getMovies(sortOrder);
-
             ArrayList<MovieItem> movieItemList = new ArrayList<>();
 
-            if(movieJson == null) {
-                return null;
+            if(sortOrder.equalsIgnoreCase("favorites")) {
+                Context context = getContext();
+                SharedPreferences sharedPreferences = context.getSharedPreferences(MoviePreference.PREF_NAME, context.MODE_PRIVATE);
+                MoviePreference moviePreference = new MoviePreference(sharedPreferences);
+                movieItemList = moviePreference.getMovieItems();
             }
+            else {
+                String movieJson = APIGetter.getMovies(sortOrder);
 
-            try {
-                movieItemList = getMovieItemsFromJson(movieJson);
-            }
-            catch (JSONException e) {
-                Log.e(LOG_TAG, e.getMessage(), e);
-                e.printStackTrace();
+                if (movieJson == null) {
+                    return null;
+                }
+
+                try {
+                    movieItemList = getMovieItemsFromJson(movieJson);
+                } catch (JSONException e) {
+                    Log.e(LOG_TAG, e.getMessage(), e);
+                    e.printStackTrace();
+                }
             }
 
             return movieItemList;
