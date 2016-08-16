@@ -16,8 +16,10 @@
     <string name="pref_header_sort_key">sort_by</string>
     <string name="pref_sort_label_popular">Popular</string>
     <string name="pref_sort_label_highest_rate">Highest Rated</string>
+    <string name="pref_sort_label_favorites">Favorites</string>
     <string name="pref_sort_value_popular">popular</string>
     <string name="pref_sort_value_highest_rate">highest_rated</string>
+    <string name="pref_sort_value_favorites">favorites</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
